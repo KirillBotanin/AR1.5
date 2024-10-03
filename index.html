@@ -23,11 +23,7 @@
       id="scene"
     >
       <a-assets>
-        <a-asset-item
-          id="bowser"
-          src="anime1.glb"
-        >
-        </a-asset-item>
+        <audio id="gravity" src="audio.mp3"></audio>
       </a-assets>
 
       <a-marker
@@ -38,15 +34,11 @@
         cursor="fuse: false; rayOrigin: mouse;"
         id="markerA"
       >
-        <a-entity
-          id="bowser-model"
-          gltf-model="#bowser"
-          position="0 0 0"
-          scale="1 1 1"
-          class="clickable"
-          gesture-handler
-        >
-        </a-entity>
+        <a-sound
+          src="#gravity"
+          autoplay="false"
+          on="markerFound: play; markerLost: stop;"
+        ></a-sound>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
