@@ -27,14 +27,27 @@
         type="pattern"
         url="pattern-kirieshka.patt"
         id="markerA"
+        emitevents="true"
       >
         <a-sound
           src="gravity.mp3"
-          autoplay="true"
+          autoplay="false"
           loop="false"
+          id="sound"
         ></a-sound>
       </a-marker>
+
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      document.querySelector('#markerA').addEventListener('markerFound', function() {
+        document.querySelector('#sound').components.sound.playSound();
+      });
+
+      document.querySelector('#markerA').addEventListener('markerLost', function() {
+        document.querySelector('#sound').components.sound.stopSound();
+      });
+    </script>
   </body>
 </html>
